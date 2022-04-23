@@ -1,3 +1,10 @@
+let citation = document.querySelector('#citation');
+let auteur = document.querySelector('#auteur');
+let btn = document.querySelector('#nouveau');
+let indexActuel = 0;
+let nbAleatoire = 0; 
+
+
 // Tableau de citations
 let citations = [
     ["La vie est un mystère qu'il faut vivre, et non un problème à résoudre.", "Gandhi"],
@@ -22,3 +29,19 @@ let citations = [
     ["Vous n’êtes jamais trop vieux pour vous fixer de nouveaux buts, ou rendre vos rêves réalité.", "C.S. Lewis"],
     ["Un pessimiste voit la difficulté dans chaque opportunité. Un optimiste voit une opportunité dans chaque difficulté.", "Winston Churchill"]
   ];
+
+  function genererNombreEntier(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
+btn.addEventListener('click', ()=>{
+  do {
+    nbAleatoire= genererNombreEntier(citations.length);
+  } while (indexActuel===nbAleatoire);
+
+  citation.textContent= citations[nbAleatoire][0];
+  auteur.textContent = citations[nbAleatoire][1];
+  indexActuel = nbAleatoire;
+});
+ 
+
